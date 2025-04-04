@@ -1,0 +1,38 @@
+{
+  "tasks": [
+    {
+      "id": "daily_backup",
+      "name": "每日备份",
+      "description": "每天凌晨2点对所有项目进行备份",
+      "schedule": "0 2 * * *",
+      "command": "../scripts/utils/backup.sh",
+      "active": false,
+      "lastRun": null,
+      "nextRun": null,
+      "type": "system"
+    },
+    {
+      "id": "restart_whisperx",
+      "name": "重启WhisperX",
+      "description": "每周一早上8点重启WhisperX服务",
+      "schedule": "0 8 * * 1",
+      "command": "cd ../whisperx && ./stop.sh && ./start.sh",
+      "active": false,
+      "lastRun": null,
+      "nextRun": null,
+      "type": "project",
+      "projectId": "whisperx"
+    },
+    {
+      "id": "clean_logs",
+      "name": "清理日志",
+      "description": "每周日晚上10点清理系统日志",
+      "schedule": "0 22 * * 0",
+      "command": "../scripts/utils/clean_logs.sh",
+      "active": false,
+      "lastRun": null,
+      "nextRun": null,
+      "type": "system"
+    }
+  ]
+}

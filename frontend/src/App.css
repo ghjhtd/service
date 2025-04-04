@@ -1,0 +1,19 @@
+.logo {
+  height: 64px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.site-layout-background {
+  background: #fff;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+} 

@@ -1,0 +1,24 @@
+{
+  "scripts": [
+    {
+      "id": "system_backup",
+      "name": "系统备份",
+      "description": "备份系统配置文件",
+      "path": "../scripts/utils/backup.sh",
+      "type": "shell",
+      "autostart": false,
+      "lastRunTime": null,
+      "lastRunStatus": null
+    },
+    {
+      "id": "clean_logs",
+      "name": "清理日志",
+      "description": "清理系统日志文件",
+      "path": "../scripts/utils/clean_logs.sh",
+      "type": "shell",
+      "autostart": false,
+      "lastRunTime": null,
+      "lastRunStatus": null
+    }
+  ]
+} 

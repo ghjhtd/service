@@ -1,0 +1,46 @@
+{
+  "system": {
+    "name": "服务器管理系统",
+    "version": "1.0.1",
+    "port": 9999,
+    "logsDir": "./logs",
+    "dataDir": "./data",
+    "tempDir": "./temp",
+    "backupDir": "./backups",
+    "maxLogSize": "10MB",
+    "maxBackupCount": 5,
+    "autoStartEnabled": true,
+    "enableScheduler": true
+  },
+  "auth": {
+    "enabled": true,
+    "sessionTimeout": 3600,
+    "users": [
+      {
+        "username": "admin",
+        "passwordHash": "d033e22ae348aeb5660fc2140aec35850c4da997", 
+        "role": "admin",
+        "lastLogin": null
+      }
+    ]
+  },
+  "notification": {
+    "email": {
+      "enabled": false,
+      "server": "smtp.example.com",
+      "port": 587,
+      "secure": true,
+      "username": "",
+      "password": "",
+      "from": "server@example.com",
+      "to": "admin@example.com"
+    },
+    "webhook": {
+      "enabled": false,
+      "url": "",
+      "method": "POST",
+      "headers": {},
+      "events": ["error", "restart", "shutdown"]
+    }
+  }
+} 

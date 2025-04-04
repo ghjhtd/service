@@ -1,0 +1,55 @@
+{
+  "projects": [
+    {
+      "id": "whisperx",
+      "name": "WhisperX",
+      "path": "../whisperx",
+      "description": "语音转文字项目",
+      "type": "backend",
+      "autostart": false,
+      "startOrder": 1,
+      "scripts": {
+        "start": "start.sh",
+        "stop": "stop.sh",
+        "build": "build.sh"
+      },
+      "status": "running",
+      "lastStartTime": "2025-04-02T22:00:24.457Z",
+      "lastStopTime": null
+    },
+    {
+      "id": "seDiaoImg",
+      "name": "色调图像处理",
+      "path": "../seDiaoImg",
+      "description": "图像处理工具",
+      "type": "frontend",
+      "autostart": false,
+      "startOrder": 2,
+      "scripts": {
+        "start": "start.sh",
+        "stop": "stop.sh",
+        "build": "build.sh"
+      },
+      "status": "stopped",
+      "lastStartTime": null,
+      "lastStopTime": null
+    },
+    {
+      "id": "imgtool",
+      "name": "图像工具",
+      "path": "../imgtool",
+      "description": "图像处理工具集",
+      "type": "frontend",
+      "autostart": false,
+      "startOrder": 3,
+      "scripts": {
+        "start": "start.sh",
+        "stop": "stop.sh",
+        "build": "build.sh"
+      },
+      "status": "stopped",
+      "lastStartTime": null,
+      "lastStopTime": null
+    }
+  ]
+}
