@@ -54,6 +54,7 @@ import {
 import axios from 'axios';
 import moment from 'moment';
 import DirectorySelector from '../components/DirectorySelector';
+import { API_BASE_URL } from '../config/api';
 
 const { Title, Text, Paragraph } = Typography;
 const { Option } = Select;
@@ -61,14 +62,6 @@ const { TextArea } = Input;
 const { DirectoryTree } = Tree;
 const { TabPane } = Tabs;
 const { Panel } = Collapse;
-
-// 获取当前域名和端口，用于API请求
-const getBaseUrl = () => {
-  const { protocol, hostname } = window.location;
-  return `${protocol}//${hostname}:9999/api`;
-};
-
-const API_BASE_URL = getBaseUrl();
 
 const Scripts = () => {
   // 状态管理

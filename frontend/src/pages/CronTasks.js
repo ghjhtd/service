@@ -21,12 +21,11 @@ import {
 import { PlusOutlined, PlayCircleOutlined, PauseCircleOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import axios from 'axios';
 import moment from 'moment';
+import { API_BASE_URL } from '../config/api';
 
 const { Title, Text } = Typography;
 const { Option } = Select;
 const { TextArea } = Input;
-
-const API_BASE_URL = 'http://localhost:9999/api';
 
 const CronTasks = () => {
   const [tasks, setTasks] = useState([]);

@@ -18,7 +18,7 @@ const app = express();
 
 // 中间件
 app.use(cors({
-  origin: 'http://localhost:9999',
+  origin: '*',
   credentials: true
 }));
 app.use(bodyParser.json());

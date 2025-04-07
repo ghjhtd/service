@@ -12,16 +12,9 @@ import {
 } from 'antd';
 import { FolderOpenOutlined } from '@ant-design/icons';
 import axios from 'axios';
+import { API_BASE_URL } from '../config/api';
 
 const { DirectoryTree } = Tree;
-
-// 获取当前域名和端口，用于API请求
-const getBaseUrl = () => {
-  const { protocol, hostname } = window.location;
-  return `${protocol}//${hostname}:9999/api`;
-};
-
-const API_BASE_URL = getBaseUrl();
 
 /**
  * 目录选择组件
