@@ -30,7 +30,8 @@ import {
   InfoCircleOutlined,
   ReloadOutlined,
   CodeOutlined,
-  SettingOutlined
+  SettingOutlined,
+  GlobalOutlined
 } from '@ant-design/icons';
 import axios from 'axios';
 import moment from 'moment';
@@ -237,6 +238,20 @@ const Projects = () => {
     }
   };
 
+  // 创建系统服务
+  const handleCreateSystemService = async (project) => {
+    try {
+      setLoading(true);
+      const response = await axios.post(`${API_BASE_URL}/systemctl/project`, { projectId: project.id });
+      message.success(`已成功为项目 ${project.name} 创建系统服务`);
+    } catch (error) {
+      console.error('创建系统服务失败:', error);
+      message.error(`创建系统服务失败: ${error.response?.data?.message || error.message}`);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const columns = [
     {
       title: '项目名称',
@@ -350,6 +365,14 @@ const Projects = () => {
               type="text" 
               icon={<SettingOutlined />} 
               onClick={() => handleToggleAutostart(record)}
+            />
+          </Tooltip>
+          
+          <Tooltip title="创建系统服务">
+            <Button 
+              type="text" 
+              icon={<GlobalOutlined />} 
+              onClick={() => handleCreateSystemService(record)}
             />
           </Tooltip>
           

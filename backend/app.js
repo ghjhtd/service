@@ -12,6 +12,7 @@ const cronRoutes = require('./routes/cron');
 const systemRoutes = require('./routes/system');
 const authRoutes = require('./routes/auth');
 const scriptRoutes = require('./routes/scripts');
+const systemctlRoutes = require('./routes/systemctl');
 
 // 创建Express应用
 const app = express();
@@ -45,6 +46,7 @@ app.use('/api/projects', projectRoutes);
 app.use('/api/scripts', scriptRoutes);
 app.use('/api/cron', cronRoutes);
 app.use('/api/system', systemRoutes);
+app.use('/api/systemctl', systemctlRoutes);
 
 // 通用错误处理中间件
 app.use((err, req, res, next) => {

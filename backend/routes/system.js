@@ -26,6 +26,9 @@ router.get('/processes', systemController.getProcessList);
 // 获取文件系统结构
 router.get('/filesystem', systemController.getFileSystem);
 
+// 获取可执行文件列表
+router.get('/executables', systemController.getExecutableFiles);
+
 // 获取文件内容
 router.get('/file', systemController.getFileContent);
 

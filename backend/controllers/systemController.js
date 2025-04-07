@@ -489,4 +489,57 @@ exports.executeCommand = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: '执行命令失败', error: error.message });
   }
+};
+
+// 获取可执行文件列表
+exports.getExecutableFiles = async (req, res) => {
+  try {
+    const { directory } = req.query;
+    
+    if (!directory) {
+      return res.status(400).json({ message: '缺少目录路径' });
+    }
+    
+    // 检查目录是否存在
+    if (!await fs.pathExists(directory)) {
+      return res.status(404).json({ message: '目录不存在' });
+    }
+    
+    // 获取目录下的所有文件
+    const files = await fs.readdir(directory);
+    
+    // 筛选可执行文件
+    const executableFiles = [];
+    
+    for (const file of files) {
+      const filePath = path.join(directory, file);
+      try {
+        const stats = await fs.stat(filePath);
+        
+        // 忽略隐藏文件和目录
+        if (file.startsWith('.') || stats.isDirectory()) {
+          continue;
+        }
+        
+        // 检查是否是可执行文件或脚本文件
+        const isExecutable = (stats.mode & fs.constants.S_IXUSR) !== 0;
+        const isScript = file.endsWith('.sh') || file.endsWith('.py') || file.endsWith('.js');
+        
+        if (isExecutable || isScript) {
+          executableFiles.push({
+            name: file,
+            path: filePath,
+            isScript
+          });
+        }
+      } catch (error) {
+        // 跳过无法访问的文件
+        continue;
+      }
+    }
+    
+    res.status(200).json(executableFiles);
+  } catch (error) {
+    res.status(500).json({ message: '获取可执行文件列表失败', error: error.message });
+  }
 }; 

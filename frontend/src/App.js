@@ -6,6 +6,7 @@ import './App.css';
 import Projects from './pages/Projects';
 import CronTasks from './pages/CronTasks';
 import Scripts from './pages/Scripts';
+import Services from './pages/Services';
 
 const { Header, Content, Footer, Sider } = Layout;
 const { Title } = Typography;
@@ -56,6 +57,9 @@ function App() {
               <Link to="/cron">定时任务</Link>
             </Menu.Item>
             <Menu.Item key="5">
+              <Link to="/services">服务管理</Link>
+            </Menu.Item>
+            <Menu.Item key="6">
               <Link to="/system">系统设置</Link>
             </Menu.Item>
           </Menu>
@@ -80,6 +84,9 @@ function App() {
                 </Route>
                 <Route path="/cron">
                   <CronTasks />
+                </Route>
+                <Route path="/services">
+                  <Services />
                 </Route>
                 <Route path="/system">
                   <Title level={2}>系统设置</Title>

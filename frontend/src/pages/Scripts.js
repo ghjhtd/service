@@ -404,6 +404,20 @@ const Scripts = () => {
     setFileExplorerVisible(true);
   };
 
+  // 添加创建系统服务的方法
+  const handleCreateSystemService = async (script) => {
+    try {
+      setLoading(true);
+      const response = await axios.post(`${API_BASE_URL}/systemctl/script`, { scriptId: script.id });
+      message.success(`已成功为脚本 ${script.name} 创建系统服务`);
+    } catch (error) {
+      console.error('创建系统服务失败:', error);
+      message.error(`创建系统服务失败: ${error.response?.data?.message || error.message}`);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   // 表格列定义
   const columns = [
     {
@@ -470,7 +484,7 @@ const Scripts = () => {
       width: 300,
       render: (_, record) => (
         <Space size="small">
-          <Tooltip title="执行脚本">
+          <Tooltip title="运行脚本">
             <Button 
               type="text" 
               icon={<PlayCircleOutlined />} 
@@ -478,15 +492,7 @@ const Scripts = () => {
             />
           </Tooltip>
           
-          <Tooltip title="停止脚本">
-            <Button 
-              type="text" 
-              icon={<StopOutlined />} 
-              onClick={() => handleStopScript(record)}
-            />
-          </Tooltip>
-          
-          <Tooltip title="查看/编辑内容">
+          <Tooltip title="查看内容">
             <Button 
               type="text" 
               icon={<FileTextOutlined />} 
@@ -502,10 +508,10 @@ const Scripts = () => {
             />
           </Tooltip>
           
-          <Tooltip title="设置定时任务">
+          <Tooltip title="定时任务">
             <Button 
               type="text" 
-              icon={<ScheduleOutlined />} 
+              icon={<ClockCircleOutlined />} 
               onClick={() => handleOpenScheduleDrawer(record)}
             />
           </Tooltip>
@@ -518,11 +524,11 @@ const Scripts = () => {
             />
           </Tooltip>
           
-          <Tooltip title={record.autostart ? "取消开机自启" : "设置开机自启"}>
+          <Tooltip title="创建系统服务">
             <Button 
               type="text" 
-              icon={<Switch size="small" checked={record.autostart} />} 
-              onClick={() => handleToggleAutostart(record)}
+              icon={<GlobalOutlined />} 
+              onClick={() => handleCreateSystemService(record)}
             />
           </Tooltip>
           

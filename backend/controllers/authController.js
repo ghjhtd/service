@@ -106,7 +106,7 @@ exports.login = async (req, res) => {
 // 验证令牌
 exports.verifyToken = async (req, res) => {
   try {
-    const token = req.headers.authorization?.split(' ')[1];
+    const token = req.headers.authorization ? req.headers.authorization.split(' ')[1] : undefined;
     
     if (!token) {
       return res.status(401).json({ message: '未提供授权令牌' });
